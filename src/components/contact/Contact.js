@@ -17,7 +17,9 @@ class Contact extends Component {
       sede: '',
       cita: '',
       lugar: '',
-
+      fecha_h: '',
+      hora_h: '',
+      desc_h: '',
       citas: [],
       value: '',
       suggest: '',
@@ -36,6 +38,9 @@ class Contact extends Component {
     this.refs.sede.value="";
     this.refs.cita.value="";
     this.refs.lugar.value="";
+    this.refs.fecha_h.value="";
+    this.refs.hora_h.value="";
+    this.refs.desc_h.value="";
   }
 
   onChange = (e) => {
@@ -47,7 +52,7 @@ class Contact extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { nombre, apellidop, apellidom, email, sexo, cel, tel, sede, cita, lugar } = this.state;
+    const { nombre, apellidop, apellidom, email, sexo, cel, tel, sede, cita, lugar, fecha_h, hora_h, desc_h } = this.state;
 
     this.ref.add({
       nombre,
@@ -59,7 +64,10 @@ class Contact extends Component {
       tel,
       sede,
       cita,
-      lugar
+      lugar,
+      fecha_h,
+      hora_h,
+      desc_h
     }).then((docRef) => {
       this.setState({
         nombre: '',
@@ -71,7 +79,10 @@ class Contact extends Component {
         tel: '',
         sede: '',
         cita: '',
-        lugar: ''
+        lugar: '',
+        fecha_h: '',
+        hora_h: '',
+        desc_h: ''
       });
        this.props.history.push('/email')
     })
@@ -82,7 +93,7 @@ class Contact extends Component {
 
   render() {
 
-    const { nombre, apellidop, apellidom, email, sexo, cel, tel, sede, cita } = this.state;
+    const { nombre, apellidop, apellidom, email, sexo, cel, tel, sede, cita, lugar, fecha_h, hora_h, desc_h } = this.state;
 
     return (
       <div style={{width: '100%', justifyContent: 'center', display: 'flex', zIndex: '100', paddingTop: '100px', minHeight: '100vh'}}>
@@ -235,9 +246,9 @@ class Contact extends Component {
                         type='text'
                         className="form-control-rf"
                         required
-                        name="lugar"
+                        name="desc_h"
                         onChange={this.onChange}
-                        ref="lugar" />
+                        ref="desc_h" />
                     </div>
                   </div>
 
