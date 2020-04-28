@@ -1,0 +1,28 @@
+.footer-container {
+  background: #092432;
+  height: 200px;
+  width: 100%;
+}
+.legal {
+  display: flex;
+  flex-direction: row;
+}
+@media (max-width: 768px) {
+  .legal {
+    display: none;
+  }
+}
+.img-f {
+  width: 33.3%;
+  height: 100%;
+  color: #fff;
+  display: flex;
+  padding-top: 55px;
+  justify-content: center;
+}
+.imgH {
+  width: 20%;
+}
+.imgH2 {
+  width: 25%;
+}
