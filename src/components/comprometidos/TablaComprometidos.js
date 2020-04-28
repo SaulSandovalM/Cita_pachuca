@@ -16,7 +16,7 @@ class TablaComprometidos extends Component {
   onCollectionUpdate = (querySnapshot) => {
     const citas = [];
     querySnapshot.forEach((doc) => {
-      const { nombre, apellidop, apellidom, email, sexo, cel, tel, sede, cita, fecha } = doc.data();
+      const { nombre, apellidop, apellidom, email, sexo, cel, tel, sede, cita, fecha, hora } = doc.data();
       citas.push({
         key: doc.id,
         doc, // DocumentSnapshot
@@ -29,7 +29,8 @@ class TablaComprometidos extends Component {
         tel,
         sede,
         cita,
-        fecha
+        fecha,
+        hora
       });
     });
     this.setState({
@@ -97,7 +98,7 @@ class TablaComprometidos extends Component {
                 <div className="products-al">
                   <div className="a-row">{citas.nombre} {citas.apellidop} {citas.apellidom}</div>
                   <div className="a-row">{citas.cel}</div>
-                  <div className="a-row">{citas.fecha}</div>
+                  <div className="a-row">{citas.fecha} / {citas.hora}</div>
                   <div className="a-row">{citas.cita}</div>
                   <div className="a-row vista">
                     <Link to={`/edit/${citas.key}`}>Ver</Link>
