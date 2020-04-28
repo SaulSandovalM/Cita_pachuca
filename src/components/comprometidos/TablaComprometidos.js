@@ -82,7 +82,7 @@ class TablaComprometidos extends Component {
     return (
       <div className="cent-compro">
         <div className="App">
-          <h2 className="title" style={{fontFamily: 'Arial'}}>Comprometidos</h2>
+          <h2 className="title" style={{fontFamily: 'Arial'}}>Citas</h2>
           <div className="products-al">
             <div className="a-row-t">Nombre</div>
             <div className="a-row-t">Telefono Celular</div>

@@ -2,8 +2,9 @@ import * as firebase from 'firebase' // doing import firebase from 'firebase' or
 import 'firebase/auth'
 import 'firebase/database'
 import 'firebase/firestore';
-import Axios from 'axios'
+import Axios from 'axios';
 
+const settings = {timestampsInSnapshots: true};
 // Initialize Firebase
 let config = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -15,6 +16,7 @@ let config = {
 }
 
 firebase.initializeApp(config)
+firebase.firestore().settings(settings);
 const db = firebase.firestore()
 
 export { Axios, db }

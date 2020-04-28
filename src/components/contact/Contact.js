@@ -16,6 +16,8 @@ class Contact extends Component {
       tel: '',
       sede: '',
       cita: '',
+      lugar: '',
+
       citas: [],
       value: '',
       suggest: '',
@@ -33,6 +35,7 @@ class Contact extends Component {
     this.refs.tel.value="";
     this.refs.sede.value="";
     this.refs.cita.value="";
+    this.refs.lugar.value="";
   }
 
   onChange = (e) => {
@@ -44,7 +47,7 @@ class Contact extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { nombre, apellidop, apellidom, email, sexo, cel, tel, sede, cita } = this.state;
+    const { nombre, apellidop, apellidom, email, sexo, cel, tel, sede, cita, lugar } = this.state;
 
     this.ref.add({
       nombre,
@@ -55,7 +58,8 @@ class Contact extends Component {
       cel,
       tel,
       sede,
-      cita
+      cita,
+      lugar
     }).then((docRef) => {
       this.setState({
         nombre: '',
@@ -67,8 +71,9 @@ class Contact extends Component {
         tel: '',
         sede: '',
         cita: '',
+        lugar: ''
       });
-       this.props.history.push('/Contact')
+       this.props.history.push('/email')
     })
     .catch((error) => {
       console.error("Error adding document: ", error);
@@ -82,56 +87,6 @@ class Contact extends Component {
     return (
       <div style={{width: '100%', justifyContent: 'center', display: 'flex', zIndex: '100', paddingTop: '100px', minHeight: '100vh'}}>
         <div style={{width: '65%'}}>
-          {/*<h1 className="back-title">Expedición de Constancia de NO Antecedentes Penales</h1>
-          <div className="row">
-            <div className="text">
-              <h5 className="title-r">Requisitos</h5>
-              <p className="size">
-                Si Usted Radica en México.
-                <br></br><br></br>
-                1.- Recibo de pago (formato F-7)
-                <br></br>
-                2.- Una Copia de constancia de la  Clave Única de Registro de Población (CURP) actualizada (código QR)
-                <br></br>
-                3.- Una Copia de Identificación Oficial (INE)
-                <br></br>
-                4.- Una Fotografía a color tamaño pasaporte fondo blanco.
-                <br></br>
-                5. Recibo de pago (formato F-7) <a href="https://ruts.hidalgo.gob.mx/tramite/572">Desacargar formato de pago</a>
-                <br></br><br></br>
-                Si Usted radica en el Extranjero
-                <br></br><br></br>
-                1. Oficio del consulado dirigido a la  Procuraduría General de Justicia del Estado de Hidalgo
-                <br></br>
-                2. Toma de Huellas por el Consulado
-                <br></br>
-                3. Copia de identificación oficial (INE, Cartilla, Pasaporte o Matrícula)
-                <br></br>
-                4. Una Copia de constancia de la  Clave Única de Registro de Población (CURP) actualizada (código QR)
-                <br></br>
-                5. 2 fotografías tamaño credencial a color de frente
-                <br></br>
-                6. Comprobante de Domicilio donde radica el interesado
-                <br></br>
-                7. Carta poder
-                <br></br>
-                8. Credencial original y copia de la persona que realiza el trámite
-                <br></br>
-                9. Recibo de pago (formato F-7) <a href="https://ruts.hidalgo.gob.mx/tramite/572">Desacargar formato de pago</a>
-              </p>
-            </div>
-            <div className="text2-res">
-              <h5 className="title-r">Ubicación</h5>
-              <p className="size">Servicios Periciales Pachuca</p>
-              <p className="size"><i>Impulsor Sector Primario 202, Plaza las Torres, 42082 Pachuca de Soto, Hgo.</i></p>
-              <a href="https://www.google.com.mx/maps/place/Servicios+Periciales/@20.0645574,-98.7844438,18z/data=!4m5!3m4!1s0x0:0x3c9746ad18bdeb6d!8m2!3d20.065287!4d-98.7853584">Abrir ubicación Google Maps</a>
-              <p className="size">Servicios Periciales Huejutla</p>
-              <p className="size"><i>Olimpia, 43000 Huejutla, Hgo.</i></p>
-              <a href="https://www.google.com.mx/maps/place/Agencia+del+Ministerio+Publico/@21.1496548,-98.4171,18z/data=!4m8!1m2!2m1!1sAgencia+de+Ministerio+P%C3%BAblico!3m4!1s0x85d727a12b89e037:0xb4b27e217d3f0a5e!8m2!3d21.1495294!4d-98.4171117">Abrir ubicación Google Maps</a>
-              <h5 className="title-r">Informes</h5>
-              <p className="size">Para más información favor de llamar al numero: <br></br>+52 (771) 71 79000 Ext. 9217</p>
-            </div>
-          </div>*/}
 
           <div style={{width: '100%'}}>
             <h1 className="back-title">Agenda tu Cita CAT</h1>
@@ -219,6 +174,7 @@ class Contact extends Component {
                     <div className='porcent-r'>
                       <label>Sede:</label>
                       <select className="form-control-r" name="sede" onChange={this.onChange} ref="sede">
+                      <option name='sede' required></option>
                         <option name='sede' required>Pachuca de Soto</option>
                         <option name='sede' required>Tizayuca</option>
                         <option name='sede' required>Tula</option>
@@ -228,14 +184,68 @@ class Contact extends Component {
                     </div>
                     <div className='porcent-r2'>
                       <label>Tipo de cita:</label>
-                      <select className="form-control-r" name="cita" onChange={this.onChange} ref="cita">
-                        <option name='cita'>Inicio de Carpeta</option>
-                        <option name='cita'>Seguimiento de Carpeta</option>
+                      <select className="form-control-r" name="cita" onChange={this.onChange} ref="cita" required>
+                      <option name='cita' required></option>
+                        <option name='cita' required>Inicio de Carpeta</option>
+                        <option name='cita' required>Seguimiento de Carpeta</option>
                       </select>
                     </div>
                   </div>
+
+                  <div style={{marginBottom: '50px'}}>
+                  </div>
+
+                  <div className='border-form'>
+                    <p style={{paddingLeft: '20px', paddingTop: '20px'}}>Datos de tramite</p>
+                    <div className="modal-name2">
+                      <label>Lugar de los hechos:</label>
+                      <input
+                        type='text'
+                        className="form-control-r"
+                        required
+                        name="lugar"
+                        onChange={this.onChange}
+                        ref="lugar" />
+                    </div>
+                    <div className="card-container-r3">
+                      <div className='porcent-r'>
+                        <label>Fecha de los hechos:</label>
+                        <input
+                          type='date'
+                          className="cell-r"
+                          required
+                          name="fecha_h"
+                          onChange={this.onChange}
+                          ref="fecha_h" />
+                      </div>
+                      <div className='porcent-r2'>
+                        <label>Hora de los hechos:</label>
+                        <input
+                          type='number'
+                          className="cell-r"
+                          required
+                          name="hora_h"
+                          onChange={this.onChange}
+                          ref="hora_h" />
+                      </div>
+                    </div>
+                    <div className="modal-name3">
+                      <label>Lugar de los hechos:</label>
+                      <textarea
+                        type='text'
+                        className="form-control-rf"
+                        required
+                        name="lugar"
+                        onChange={this.onChange}
+                        ref="lugar" />
+                    </div>
+                  </div>
+
+                  <div style={{marginBottom: '50px'}}>
+                  </div>
+
                   <div className="presentation-cta">
-                    <button type='submit' className="boton-color2">Confirmar</button>
+                    <button type='submit'>Enviar</button>
                   </div>
 
                 </form>

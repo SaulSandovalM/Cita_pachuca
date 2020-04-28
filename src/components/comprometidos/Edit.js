@@ -17,6 +17,7 @@ class Comprometido extends Component {
       sede: '',
       cita: '',
       fecha: '',
+      hora: ''
     };
   }
 
@@ -37,6 +38,7 @@ class Comprometido extends Component {
           sede: citas.sede,
           cita: citas.cita,
           fecha: citas.fecha,
+          hora: citas.hora
         });
       } else {
         console.log("No se encuentra documento");
@@ -53,7 +55,7 @@ class Comprometido extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { nombre, apellidop, apellidom, email, sexo, cel, tel, sede, cita, fecha } = this.state;
+    const { nombre, apellidop, apellidom, email, sexo, cel, tel, sede, cita, fecha, hora } = this.state;
 
     const ref = firebase.firestore().collection('citas').doc(this.state.key);
     ref.set({
@@ -66,7 +68,8 @@ class Comprometido extends Component {
       tel,
       sede,
       cita,
-      fecha
+      fecha,
+      hora
     }).then((docRef) => {
       this.setState({
         nombre: '',
@@ -78,7 +81,8 @@ class Comprometido extends Component {
         tel: '',
         sede: '',
         cita: '',
-        fecha: ''
+        fecha: '',
+        hora: ''
       });
       this.props.history.push('/')
     })
@@ -98,23 +102,38 @@ class Comprometido extends Component {
             </h3>
           </div>
           <div class="panel-body">
-            <h4><div to={`/show/${this.state.key}`} class="btn btn-primary">Board List</div></h4>
+            <h4><div to={`/show/${this.state.key}`} class="btn btn-primary">Agregar hora de cita</div></h4>
             <form onSubmit={this.onSubmit}>
               <div class="form-group">
                 <label for="nombre">Nombre:</label>
-                <input type="text" class="form-control" name="nombre" value={this.state.nombre} onChange={this.onChange} placeholder="Title" />
+                <input type="text" class="form-control" name="nombre" value={this.state.nombre} onChange={this.onChange} placeholder="Nombre" />
               </div>
               <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="text" class="form-control" name="email" value={this.state.email} onChange={this.onChange} placeholder="Description" />
+                <input type="text" class="form-control" name="email" value={this.state.email} onChange={this.onChange} placeholder="Email" />
               </div>
               <div class="form-group">
                 <label for="cel">Telefono:</label>
-                <input type="text" class="form-control" name="cel" value={this.state.cel} onChange={this.onChange} placeholder="Author" />
+                <input type="text" class="form-control" name="cel" value={this.state.cel} onChange={this.onChange} placeholder="Telefono" />
               </div>
               <div class="form-group">
                 <label for="fecha">Fecha:</label>
-                <input type="text" class="form-control" name="fecha" value={this.state.fecha} onChange={this.onChange} placeholder="Author" />
+                <input type="date" class="form-control" name="fecha" value={this.state.fecha} onChange={this.onChange} placeholder="Fecha" />
+              </div>
+              <div class="form-group">
+                <label for="hora">Hora:</label>
+                <select class="form-control" name="hora" value={this.state.hora} onChange={this.onChange} placeholder="Hora">
+                  <option name="hora"></option>
+                  <option name="hora">9:00 am</option>
+                  <option name="hora">10:00 am</option>
+                  <option name="hora">11:00 am</option>
+                  <option name="hora">12:00 pm</option>
+                  <option name="hora">13:00 pm</option>
+                  <option name="hora">14:00 pm</option>
+                  <option name="hora">15:00 pm</option>
+                  <option name="hora">16:00 pm</option>
+                  <option name="hora">17:00 pm</option>
+                </select>
               </div>
               <button type="submit" class="btn btn-success">Submit</button>
             </form>

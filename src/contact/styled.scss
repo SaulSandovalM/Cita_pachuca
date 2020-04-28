@@ -1,16 +1,18 @@
 h1 {
   display: table;
   margin: 40px auto;
-  color: #fff;
+  color: #000;
   font: 30px Helvetica;
   letter-spacing: 2px;
   text-transform: uppercase;
   letter-spacing: 10px;
+  width: 100%;
 }
 
 form {
   display: table;
   margin: 40px auto;
+  width: 100%;
 
   input,
   textarea {
@@ -50,7 +52,7 @@ form {
     transition: all 0.2s ease-in-out;
     font: 18px Helvetica, Arial, sans-serif;
     border: none;
-    background: #1792E8;
+    background: #e86374;
     color: #fff;
     padding: 20px;
     width: 100%;
@@ -58,7 +60,7 @@ form {
     letter-spacing: 5px;
 
     &:hover {
-      background: #0e82d4;
+      background: #e86374;
       cursor: pointer;
     }
   }
