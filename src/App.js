@@ -5,7 +5,6 @@ import ProtectedRoute from "./ProtectedRoute";
 import Login from "./components/login/Login";
 import TablaComprometidos from './components/comprometidos/TablaComprometidos';
 import Edit from './components/comprometidos/Edit';
-import Show from './components/comprometidos/Show';
 import Contact from './components/contact/Contact';
 import ContactForm from './contact/index';
 

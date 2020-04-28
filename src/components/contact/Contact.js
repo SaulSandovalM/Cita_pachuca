@@ -93,7 +93,7 @@ class Contact extends Component {
 
   render() {
 
-    const { nombre, apellidop, apellidom, email, sexo, cel, tel, sede, cita, lugar, fecha_h, hora_h, desc_h } = this.state;
+    
 
     return (
       <div style={{width: '100%', justifyContent: 'center', display: 'flex', zIndex: '100', paddingTop: '100px', minHeight: '100vh'}}>
