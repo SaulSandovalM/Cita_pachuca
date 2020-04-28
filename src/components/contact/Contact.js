@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Contact.css';
-import firebase from '../../Firebase';
+import firebase from '../../firebase/firebaseConfig';
 
 class Contact extends Component {
   constructor(props) {

@@ -1,4 +1,4 @@
-import firebase from "../Firebase";
+import firebase from "../firebase/firebaseConfig";
 
 export const LOGIN_REQUEST = "LOGIN_REQUEST";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
