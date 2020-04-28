@@ -11,6 +11,7 @@ const ContactForm = () => {
       [e.target.name]: e.target.value,
     })
   }
+  
   const handleSubmit = event => {
     event.preventDefault()
     sendEmail()
@@ -20,6 +21,7 @@ const ContactForm = () => {
       message: '',
     })
   }
+
   const sendEmail = () => {
     Axios.post(
       'https://us-central1-citas-545b9.cloudfunctions.net/submit',
@@ -45,8 +47,8 @@ const ContactForm = () => {
           <h1>Complete el formulario</h1>
           <input
             type="text"
-            name="name"
             placeholder="Nombre"
+            name="name"
             onChange={updateInput}
             value={formData.name || ''}
           />

@@ -7,6 +7,7 @@ import TablaComprometidos from './components/comprometidos/TablaComprometidos';
 import Edit from './components/comprometidos/Edit';
 import Contact from './components/contact/Contact';
 import ContactForm from './contact/index';
+import Msg from './components/contact/Msg';
 
 function App(props) {
   const { isAuthenticated, isVerifying } = props;
@@ -22,7 +23,7 @@ function App(props) {
       <Route path="/Login" component={Login} />
       <Route path="/Contact" component={Contact} />
       <Route path='/edit/:id' component={Edit} />
-      <Route path='/email' component={ContactForm} />
+      <Route path='/mensaje' component={Msg} />
     </Switch>
   );
 }

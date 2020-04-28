@@ -102,6 +102,7 @@
 .back-title {
   background-color: #cfcfcf;
   padding: 7px 15px;
+  text-align: center;
 }
 .row {
   width: 100%;
@@ -190,4 +191,48 @@
 }
 .modal-name3 {
   padding: 0px 50px 0px 50px;
+}
+/* Estilos de msg */
+.mensaje {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.msg-center {
+  width: 60%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-self: center;
+}
+.logo_m {
+  width: 200px;
+  align-self: center;
+}
+.p-sz {
+  font-size: 30px;
+  margin-top: 50px;
+}
+.col-msg {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.button-f {
+  transition: all 0.2s ease-in-out;
+  font: 18px Helvetica, Arial, sans-serif;
+  border: none;
+  background: #ed1c24;
+  color: #fff;
+  padding: 20px;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+.button-f:hover {
+  background: #64bc46;
+  cursor: pointer;
 }
