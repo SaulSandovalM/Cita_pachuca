@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Comprometidos.css';
-import firebase from '../../Firebase';
+import firebase from "../../firebase/firebaseConfig";
 import { Link } from 'react-router-dom';
 
 class TablaComprometidos extends Component {
