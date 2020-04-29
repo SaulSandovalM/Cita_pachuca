@@ -3,10 +3,9 @@ import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import ProtectedRoute from "./ProtectedRoute";
 import Login from "./components/login/Login";
-import TablaComprometidos from './components/comprometidos/TablaComprometidos';
-import Edit from './components/comprometidos/Edit';
+import Citas from './components/citas/Citas';
+import Edit from './components/citas/Edit';
 import Contact from './components/contact/Contact';
-import ContactForm from './contact/index';
 import Msg from './components/contact/Msg';
 
 function App(props) {
@@ -16,7 +15,7 @@ function App(props) {
       <ProtectedRoute
         exact
         path="/"
-        component={TablaComprometidos}
+        component={Citas}
         isAuthenticated={isAuthenticated}
         isVerifying={isVerifying}
       />

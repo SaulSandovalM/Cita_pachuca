@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Contact.css';
+import './Contact.scss';
 import { Axios, db } from '../../firebase/firebaseConfig'
 
 const Contact = () => {
@@ -29,6 +30,9 @@ const Contact = () => {
       fecha_h: '',
       hora_h: '',
       desc_h: '',
+      num_carpeta: '',
+      parte_in: '',
+      motivo: ''
     })
   }
 
@@ -52,6 +56,9 @@ const Contact = () => {
           fecha_h: formData.fecha_h,
           hora_h: formData.hora_h,
           desc_h: formData.desc_h,
+          num_carpeta: formData.num_carpeta,
+          parte_in: formData.parte_in,
+          motivo: formData.motivo,
           time: new Date(),
         })
       })
@@ -128,8 +135,6 @@ const Contact = () => {
                     <input
                       type="number"
                       className="cell-r"
-                      maxlength={10}
-                      required
                       name="cel"
                       onChange={updateInput}
                       value={formData.cel || ''} />
@@ -139,8 +144,6 @@ const Contact = () => {
                     <input
                       type="number"
                       className="cell-r"
-                      maxlength={10}
-                      required
                       name="tel"
                       onChange={updateInput}
                       value={formData.tel || ''} />
@@ -161,7 +164,7 @@ const Contact = () => {
                   </div>
                   <div className='porcent-r2'>
                     <label>Tipo de cita:</label>
-                    <select className="form-control-r"name="cita" onChange={updateInput} value={formData.cita || ''} required>
+                    <select className="form-control-r" name="cita" onChange={updateInput} value={formData.cita || ''} required>
                     <option name='cita' required></option>
                       <option name='cita' required>Inicio de Carpeta</option>
                       <option name='cita' required>Seguimiento de Carpeta</option>
@@ -172,56 +175,97 @@ const Contact = () => {
                 <div style={{marginBottom: '50px'}}>
                 </div>
 
-                <div className='border-form'>
-                  <p style={{paddingLeft: '20px', paddingTop: '20px'}}>Datos de tramite</p>
-                  <div className="modal-name2">
-                    <label>Lugar de los hechos:</label>
-                    <input
-                      type='text'
-                      className="form-control-r"
-                      required
-                      name="lugar"
-                      onChange={updateInput}
-                      value={formData.lugar || ''} />
-                  </div>
-                  <div className="card-container-r3">
-                    <div className='porcent-r'>
-                      <label>Fecha de los hechos:</label>
+                {formData.cita === 'Inicio de Carpeta' && (
+                  <div className='border-form'>
+                    <p style={{paddingLeft: '20px', paddingTop: '20px'}}>Datos de tramite</p>
+                    <div className="modal-name2">
+                      <label>Lugar de los hechos:</label>
                       <input
-                        type='date'
-                        className="cell-r"
+                        type='text'
+                        className="form-control-r"
                         required
-                        name="fecha_h"
+                        name="lugar"
                         onChange={updateInput}
-                        value={formData.fecha_h || ''} />
+                        value={formData.lugar || ''} />
                     </div>
-                    <div className='porcent-r2'>
-                      <label>Hora de los hechos:</label>
-                      <input
-                        type='number'
-                        className="cell-r"
+                    <div className="card-container-r3" style={{marginTop: '15px'}}>
+                      <div className='porcent-r'>
+                        <label>Fecha de los hechos:</label>
+                        <input
+                          type='date'
+                          className="cell-r"
+                          required
+                          name="fecha_h"
+                          onChange={updateInput}
+                          value={formData.fecha_h || ''} />
+                      </div>
+                      <div className='porcent-r2'>
+                        <label>Hora de los hechos:</label>
+                        <input
+                          type='text'
+                          className="cell-r"
+                          required
+                          name="hora_h"
+                          onChange={updateInput}
+                          value={formData.hora_h || ''} />
+                      </div>
+                    </div>
+                    <div className="modal-name3">
+                      <label>Descripcion de los hechos:</label>
+                      <textarea
+                        type='text'
+                        className="form-control-rf"
                         required
-                        name="hora_h"
+                        name="desc_h"
                         onChange={updateInput}
-                        value={formData.hora_h || ''} />
+                        value={formData.desc_h || ''} />
                     </div>
                   </div>
-                  <div className="modal-name3">
-                    <label>Descripcion de los hechos:</label>
-                    <textarea
-                      type='text'
-                      className="form-control-rf"
-                      required
-                      name="desc_h"
-                      onChange={updateInput}
-                      value={formData.desc_h || ''} />
-                  </div>
-                </div>
+                )}
+
+                {formData.cita === 'Seguimiento de Carpeta' && (
+                   <div className='border-form'>
+                     <p style={{paddingLeft: '20px', paddingTop: '20px'}}>Datos de tramite</p>
+                     <div className="modal-name2">
+                       <label>Numero de carpeta:</label>
+                       <input
+                         type='text'
+                         className="form-control-r"
+                         required
+                         name="num_carpeta"
+                         onChange={updateInput}
+                         value={formData.num_carpeta || ''} />
+                     </div>
+                     <div className="modal-name2" style={{marginTop: '15px'}}>
+                       <label>Parte Involucrada:</label>
+                       <select className="form-control-r" name="parte_in" onChange={updateInput} value={formData.parte_in || ''}>
+                         <option name='parte_in'></option>
+                         <option name='parte_in'>Victima</option>
+                         <option name='parte_in'>Asesor Juridico Victima</option>
+                         <option name='parte_in'>Asesor Juridico Imputado</option>
+                       </select>
+                     </div>
+                     <div className="modal-name3" style={{marginTop: '15px'}}>
+                       <label>Motivo:</label>
+                       <textarea
+                         type='text'
+                         className="form-control-rf"
+                         name="motivo"
+                         required
+                         onChange={updateInput}
+                         value={formData.motivo || ''}
+                         placeholder="(Entrevista de testigos ...)" />
+                     </div>
+                   </div>
+               )}
 
                 <div style={{marginBottom: '50px'}}>
                 </div>
 
                 <button type="submit">Enviar</button>
+
+                <div style={{marginBottom: '50px'}}>
+                </div>
 
               </form>
             </div>

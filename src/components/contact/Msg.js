@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Contact.css';
-import firebase from '../../firebase/firebaseConfig';
 import logo_hgo from '../../img/logo_hgo.png';
 import { Link } from 'react-router-dom';
 

@@ -182,7 +182,7 @@
   border: 1px solid;
 }
 .modal-name2 {
-  padding: 20px 50px 0px 50px;
+  padding: 0px 50px 0px 50px;
 }
 .card-container-r3 {
   padding: 0px 50px 0px 50px;
@@ -190,7 +190,7 @@
   flex-direction: row;
 }
 .modal-name3 {
-  padding: 0px 50px 0px 50px;
+  padding: 0px 50px 50px 50px;
 }
 /* Estilos de msg */
 .mensaje {

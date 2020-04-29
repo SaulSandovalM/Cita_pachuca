@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import './Comprometidos.css';
+import './Citas.css';
 import firebase from '../../firebase/firebaseConfig';
 import { Link } from 'react-router-dom';
 
-class TablaComprometidos extends Component {
+class Citas extends Component {
   constructor() {
     super();
-    this.ref = firebase.firestore().collection('citas');
+    this.ref = firebase.firestore().collection('emails');
     this.unsubscribe = null;
     this.state = {
       citas: [],
@@ -43,47 +43,15 @@ class TablaComprometidos extends Component {
   }
 
   render() {
-
-    var user = firebase.auth().currentUser;
-    var email;
-
-    if (user != null) {
-      email = user.email;
-    }
-
-    let admin;
-    if (email === 'administrador@procu.com') {
-      admin = 'ADMIN';
-    } else if (email === 'nayra@procu.com') {
-      admin = 'NAYRA';
-    } else if (email === 'laura@procu.com') {
-      admin = 'LAURA';
-    } else if (email === 'miguel@procu.com') {
-      admin = 'MIGUEL';
-    } else if (email === 'teresa@procu.com') {
-      admin = 'TERESA';
-    } else if (email === 'marcos@procu.com') {
-      admin = 'MARCOS';
-    } else if (email === 'eloy@procu.com') {
-      admin = 'ELOY';
-    } else if (email === 'karina@procu.com') {
-      admin = 'KARINA';
-    } else if (email === 'martha@procu.com') {
-      admin = 'MARTHA';
-    } else if (email === 'lilia@procu.com') {
-      admin = 'LILIA';
-    } else if (email === 'cenely@procu.com') {
-      admin = 'CENELY';
-    } else if (email === 'hector@procu.com') {
-      admin = 'HECTOR';
-    } else if (email === 'omar@procu.com') {
-      admin = 'OMAR';
-    }
-
     return (
       <div className="cent-compro">
         <div className="App">
           <h2 className="title" style={{fontFamily: 'Arial'}}>Citas</h2>
+          <div className="row-cit">
+            <Link to='/Contact' style={{textDecoration: 'none'}}>
+              <p className='p-f-s'><b>Agendar Cita</b></p>
+            </Link>
+          </div>
           <div className="products-al">
             <div className="a-row-t">Nombre</div>
             <div className="a-row-t">Telefono Celular</div>
@@ -114,4 +82,4 @@ class TablaComprometidos extends Component {
   }
 }
 
-export default TablaComprometidos;
+export default Citas;
