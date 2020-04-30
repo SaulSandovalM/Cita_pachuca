@@ -164,10 +164,10 @@ const Contact = () => {
                   </div>
                   <div className='porcent-r2'>
                     <label>Tipo de cita:</label>
-                    <select className="form-control-r" name="cita" onChange={updateInput} value={formData.cita || ''} required>
-                    <option name='cita' required></option>
-                      <option name='cita' required>Inicio de Carpeta</option>
-                      <option name='cita' required>Seguimiento de Carpeta</option>
+                    <select className="form-control-r" required name="cita" onChange={updateInput} value={formData.cita || ''}>
+                      <option name='cita'></option>
+                      <option name='cita'>Inicio de Carpeta</option>
+                      <option name='cita'>Seguimiento de Carpeta</option>
                     </select>
                   </div>
                 </div>
@@ -183,7 +183,6 @@ const Contact = () => {
                       <input
                         type='text'
                         className="form-control-r"
-                        required
                         name="lugar"
                         onChange={updateInput}
                         value={formData.lugar || ''} />
@@ -194,7 +193,6 @@ const Contact = () => {
                         <input
                           type='date'
                           className="cell-r"
-                          required
                           name="fecha_h"
                           onChange={updateInput}
                           value={formData.fecha_h || ''} />
@@ -204,7 +202,6 @@ const Contact = () => {
                         <input
                           type='text'
                           className="cell-r"
-                          required
                           name="hora_h"
                           onChange={updateInput}
                           value={formData.hora_h || ''} />
@@ -229,9 +226,8 @@ const Contact = () => {
                      <div className="modal-name2">
                        <label>Numero de carpeta:</label>
                        <input
-                         type='text'
+                         type='number'
                          className="form-control-r"
-                         required
                          name="num_carpeta"
                          onChange={updateInput}
                          value={formData.num_carpeta || ''} />
@@ -251,7 +247,6 @@ const Contact = () => {
                          type='text'
                          className="form-control-rf"
                          name="motivo"
-                         required
                          onChange={updateInput}
                          value={formData.motivo || ''}
                          placeholder="(Entrevista de testigos ...)" />
