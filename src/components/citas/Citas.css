@@ -9,7 +9,11 @@
   width: 85%;
 }
 .title {
+  font-family: Arial;
   margin-left: 50px;
+}
+.nolink {
+  text-decoration: none;
 }
 .row-a {
   display: flex;

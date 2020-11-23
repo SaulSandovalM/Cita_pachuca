@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
-import './Citas.css';
-import firebase from '../../firebase/firebaseConfig';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
+import './Citas.css'
+import firebase from '../../firebase/firebaseConfig'
+import { Link } from 'react-router-dom'
 
-class Citas extends Component {
-  constructor() {
-    super();
-    this.ref = firebase.firestore().collection('emails');
-    this.unsubscribe = null;
+export default class Citas extends Component {
+  constructor () {
+    super()
+    this.ref = firebase.firestore().collection('emails')
+    this.unsubscribe = null
     this.state = {
-      citas: [],
-    };
+      citas: []
+    }
   }
 
   onCollectionUpdate = (querySnapshot) => {
-    const citas = [];
+    const citas = []
     querySnapshot.forEach((doc) => {
-      const { nombre, apellidop, apellidom, email, sexo, cel, tel, sede, cita, fecha, hora } = doc.data();
+      const { nombre, apellidop, apellidom, email, sexo, cel, tel, sede, cita, fecha, hora } = doc.data()
       citas.push({
         key: doc.id,
-        doc, // DocumentSnapshot
+        doc,
         nombre,
         apellidop,
         apellidom,
@@ -31,44 +31,44 @@ class Citas extends Component {
         cita,
         fecha,
         hora
-      });
-    });
+      })
+    })
     this.setState({
       citas
-   });
+   })
   }
 
-  componentDidMount() {
-    this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
+  componentDidMount () {
+    this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate)
   }
 
-  render() {
+  render () {
     return (
-      <div className="cent-compro">
-        <div className="App">
-          <h2 className="title" style={{fontFamily: 'Arial'}}>Citas</h2>
-          <div className="row-cit">
-            <Link to='/Contact' style={{textDecoration: 'none'}}>
+      <div className='cent-compro'>
+        <div className='App'>
+          <h2 className='title'>Citas</h2>
+          <div className='row-cit'>
+            <Link to='/Contact' className='nolink'>
               <p className='p-f-s'><b>Agendar Cita</b></p>
             </Link>
           </div>
-          <div className="products-al">
-            <div className="a-row-t">Nombre</div>
-            <div className="a-row-t">Telefono Celular</div>
-            <div className="a-row-t">Fecha</div>
-            <div className="a-row-t">Tipo de Cita</div>
-            <div className="a-row-t"></div>
+          <div className='products-al'>
+            <div className='a-row-t'>Nombre</div>
+            <div className='a-row-t'>Telefono Celular</div>
+            <div className='a-row-t'>Fecha</div>
+            <div className='a-row-t'>Tipo de Cita</div>
+            <div className='a-row-t'></div>
           </div>
           <div>
             {this.state.citas.map(citas =>
               <div>
                 {/*{citas.realizo === admin &&*/}
-                <div className="products-al">
-                  <div className="a-row">{citas.nombre} {citas.apellidop} {citas.apellidom}</div>
-                  <div className="a-row">{citas.cel}</div>
-                  <div className="a-row">{citas.fecha} / {citas.hora}</div>
-                  <div className="a-row">{citas.cita}</div>
-                  <div className="a-row vista">
+                <div className='products-al'>
+                  <div className='a-row'>{citas.nombre} {citas.apellidop} {citas.apellidom}</div>
+                  <div className='a-row'>{citas.cel}</div>
+                  <div className='a-row'>{citas.fecha} / {citas.hora}</div>
+                  <div className='a-row'>{citas.cita}</div>
+                  <div className='a-row vista'>
                     <Link to={`/edit/${citas.key}`}>Ver</Link>
                   </div>
                 </div>
@@ -78,8 +78,6 @@ class Citas extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
-
-export default Citas;
