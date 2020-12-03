@@ -34,7 +34,7 @@ const Contact = () => {
       parte_in: '',
       motivo: ''
     })
-    alert('Se envio')
+    alert('Su petición ha sido enviada, recibiras un mensaje confirmando el dia y la hora de tu cita')
   }
 
   const sendEmail = () => {
@@ -43,7 +43,7 @@ const Contact = () => {
       formData
     )
       .then(res => {
-        db.collection('emails').add({
+        db.collection('citas').add({
           nombre: formData.nombre,
           apellidop: formData.apellidop,
           apellidom: formData.apellidom,
